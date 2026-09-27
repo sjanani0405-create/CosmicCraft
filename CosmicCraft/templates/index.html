@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CosmicCraft - AI Comic Creator</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', path='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+<header class="navbar">
+    <h1>🎨 CosmicCraft</h1>
+
+    <a href="/history">History</a>
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <h2>Create Your Own Comic</h2>
+
+        <p>
+            Turn your imagination into a comic story
+            with characters, scenes and dialogue.
+        </p>
+
+    </section>
+
+
+    <section class="card">
+
+        <form action="/generate" method="post">
+
+            <label for="prompt">
+                Comic Idea
+            </label>
+
+            <textarea
+                id="prompt"
+                name="prompt"
+                rows="5"
+                placeholder="Example: A young inventor discovers a mysterious robot..."
+                required
+            ></textarea>
+
+
+            <label for="genre">
+                Genre
+            </label>
+
+            <select id="genre" name="genre">
+
+                <option>Adventure</option>
+                <option>Fantasy</option>
+                <option>Science Fiction</option>
+                <option>Comedy</option>
+                <option>Mystery</option>
+
+            </select>
+
+
+            <label for="tone">
+                Tone
+            </label>
+
+            <select id="tone" name="tone">
+
+                <option>Fun</option>
+                <option>Funny</option>
+                <option>Serious</option>
+                <option>Exciting</option>
+                <option>Mysterious</option>
+
+            </select>
+
+
+            <label for="language">
+                Language
+            </label>
+
+            <select id="language" name="language">
+
+                <option>English</option>
+                <option>Hindi</option>
+                <option>Kannada</option>
+
+            </select>
+
+
+            <label for="panel_count">
+                Number of Panels
+            </label>
+
+            <select id="panel_count" name="panel_count">
+
+                <option value="4">4</option>
+                <option value="6" selected>6</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+
+            </select>
+
+
+            <button type="submit">
+                ✨ Generate Comic
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+</body>
+</html>

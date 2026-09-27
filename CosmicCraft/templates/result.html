@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ story.title }} - CosmicCraft</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', path='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+<header class="navbar">
+    <h1>🎨 CosmicCraft</h1>
+
+    <a href="/">Create Another</a>
+</header>
+
+
+<main class="container">
+
+    <a class="back-link" href="/">
+        ← Back to Home
+    </a>
+
+
+    <section class="card">
+
+        <h2>{{ story.title }}</h2>
+
+        <p>
+            <strong>Idea:</strong>
+            {{ story.prompt }}
+        </p>
+
+        <p>
+            <strong>Genre:</strong>
+            {{ story.genre }}
+        </p>
+
+        <p>
+            <strong>Tone:</strong>
+            {{ story.tone }}
+        </p>
+
+        <p>
+            <strong>Language:</strong>
+            {{ story.language }}
+        </p>
+
+    </section>
+
+
+    {% if story.final_image %}
+
+    <section class="card">
+
+        <h2>Comic Preview</h2>
+
+        <img
+            class="comic-preview"
+            src="{{ story.final_image }}"
+            alt="Generated comic"
+        >
+
+    </section>
+
+    {% endif %}
+
+
+    {% if comic %}
+
+    <section class="card">
+
+        <h2>Characters</h2>
+
+        <div class="panel-grid">
+
+            {% for character in comic.characters %}
+
+            <div class="panel">
+
+                <h3>
+                    {{ character.name }}
+                </h3>
+
+                <p>
+                    {{ character.description }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>Comic Panels</h2>
+
+        <div class="panel-grid">
+
+            {% for panel in comic.panels %}
+
+            <div class="panel">
+
+                <h3>
+                    Panel {{ panel.panel_number }}
+                </h3>
+
+                <p>
+                    <strong>Scene:</strong>
+                    {{ panel.scene }}
+                </p>
+
+                <p>
+                    <strong>Dialogue:</strong>
+                    {{ panel.dialogue }}
+                </p>
+
+                <p>
+                    <strong>Caption:</strong>
+                    {{ panel.caption }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <section class="card">
+
+        <a href="/">
+            ← Create Another Comic
+        </a>
+
+    </section>
+
+</main>
+
+</body>
+</html>

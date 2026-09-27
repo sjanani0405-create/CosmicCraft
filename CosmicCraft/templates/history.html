@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comic History - CosmicCraft</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', path='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <h1>🎨 CosmicCraft</h1>
+
+    <a href="/">Create Comic</a>
+
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <h2>📚 Comic History</h2>
+
+        <p>
+            View the comics you have created.
+        </p>
+
+    </section>
+
+
+    {% if stories %}
+
+    <ul class="story-list">
+
+        {% for story in stories %}
+
+        <li>
+
+            <h3>
+                {{ story.title }}
+            </h3>
+
+            <p>
+                {{ story.prompt }}
+            </p>
+
+            <p>
+                <strong>Genre:</strong>
+                {{ story.genre }}
+                |
+                <strong>Panels:</strong>
+                {{ story.panel_count }}
+            </p>
+
+            <br>
+
+            <a href="/story/{{ story.id }}">
+                View Comic →
+            </a>
+
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+    {% else %}
+
+    <section class="card">
+
+        <h3>No comics yet.</h3>
+
+        <p>
+            Create your first comic to see it here.
+        </p>
+
+        <br>
+
+        <a href="/">
+            ✨ Create Your First Comic
+        </a>
+
+    </section>
+
+    {% endif %}
+
+</main>
+
+</body>
+
+</html>
